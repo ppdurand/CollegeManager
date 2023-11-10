@@ -1,12 +1,19 @@
 package com.example.CollegeManager.models;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
 public class Student extends Person{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idStudent;
+    @OneToOne
     private List<Registration> registrationList;
     private float collegeMedia;
 
+    public Student() {}
     public Student(Long idStudent, List<Registration> registrationList, float collegeMedia) {
         this.idStudent = idStudent;
         this.registrationList = registrationList;

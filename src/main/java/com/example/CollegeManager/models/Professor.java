@@ -1,9 +1,15 @@
 package com.example.CollegeManager.models;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
 public class Professor extends Person{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProfessor;
+    @OneToMany
     private List<Course> courseList;
 
     public Professor() {}

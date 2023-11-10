@@ -1,11 +1,19 @@
 package com.example.CollegeManager.models;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
 public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCourse;
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "professor_id")
     private Professor professor;
+    @OneToMany
     private List<Registration> registrationList;
 
     public Course() {}
