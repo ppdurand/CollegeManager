@@ -9,22 +9,23 @@ public class Student extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idStudent;
-    @OneToOne
+    @OneToMany
     private List<Registration> registrationList;
-    private float collegeMedia;
+    private float collegeAverage;
 
     public Student() {}
-    public Student(Long idStudent, List<Registration> registrationList, float collegeMedia) {
+    public Student(Long idStudent, List<Registration> registrationList, float collegeAverage) {
         this.idStudent = idStudent;
         this.registrationList = registrationList;
-        this.collegeMedia = collegeMedia;
+        this.collegeAverage = collegeAverage;
     }
 
-    public Student(Long idPerson, String firstName, String lastName, Long idStudent, List<Registration> registrationList, float collegeMedia) {
+    public Student(Long idPerson, String firstName, String lastName, Long idStudent,
+                   List<Registration> registrationList, float collegeAverage) {
         super(idPerson, firstName, lastName);
         this.idStudent = idStudent;
         this.registrationList = registrationList;
-        this.collegeMedia = collegeMedia;
+        this.collegeAverage = collegeAverage;
     }
 
     public Long getIdStudent() {
@@ -44,10 +45,10 @@ public class Student extends Person{
     }
 
     public float getCollegeMedia() {
-        return collegeMedia;
+        return collegeAverage;
     }
 
-    public void setCollegeMedia(float collegeMedia) {
-        this.collegeMedia = collegeMedia;
+    public void setCollegeMedia(float collegeAverage) {
+        this.collegeAverage = collegeAverage;
     }
 }
