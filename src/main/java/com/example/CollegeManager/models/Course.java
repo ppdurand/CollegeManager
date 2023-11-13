@@ -1,10 +1,14 @@
 package com.example.CollegeManager.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,38 +26,6 @@ public class Course {
         this.idCourse = idCourse;
         this.name = name;
         this.professor = professor;
-        this.registrationList = registrationList;
-    }
-
-    public Long getIdCourse() {
-        return idCourse;
-    }
-
-    public void setIdCourse(Long idCourse) {
-        this.idCourse = idCourse;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Professor getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
-    }
-
-    public List<Registration> getRegistrationList() {
-        return registrationList;
-    }
-
-    public void setRegistrationList(List<Registration> registrationList) {
         this.registrationList = registrationList;
     }
 }

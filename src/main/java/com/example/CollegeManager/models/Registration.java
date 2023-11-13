@@ -1,8 +1,12 @@
 package com.example.CollegeManager.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Registration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,62 +32,6 @@ public class Registration {
         this.firstAvaliation = firstAvaliation;
         this.secondAvaliation = secondAvaliation;
         this.thirdAvaliation = thirdAvaliation;
-        this.fourthAvaliation = fourthAvaliation;
-    }
-
-    public Long getIdRegistration() {
-        return idRegistration;
-    }
-
-    public void setIdRegistration(Long idRegistration) {
-        this.idRegistration = idRegistration;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public float getFirstAvaliation() {
-        return firstAvaliation;
-    }
-
-    public void setFirstAvaliation(float firstAvaliation) {
-        this.firstAvaliation = firstAvaliation;
-    }
-
-    public float getSecondAvaliation() {
-        return secondAvaliation;
-    }
-
-    public void setSecondAvaliation(float secondAvaliation) {
-        this.secondAvaliation = secondAvaliation;
-    }
-
-    public float getThirdAvaliation() {
-        return thirdAvaliation;
-    }
-
-    public void setThirdAvaliation(float thirdAvaliation) {
-        this.thirdAvaliation = thirdAvaliation;
-    }
-
-    public float getFourthAvaliation() {
-        return fourthAvaliation;
-    }
-
-    public void setFourthAvaliation(float fourthAvaliation) {
         this.fourthAvaliation = fourthAvaliation;
     }
 }

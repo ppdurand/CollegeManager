@@ -2,10 +2,14 @@ package com.example.CollegeManager.models;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Student extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,29 +37,5 @@ public class Student extends Person{
     public Student(String firstName, String lastName, List<Registration> registrationList) {
         super(firstName, lastName);
         this.registrationList = registrationList;
-    }
-
-    public Long getIdStudent() {
-        return idStudent;
-    }
-
-    public void setIdStudent(Long idStudent) {
-        this.idStudent = idStudent;
-    }
-
-    public List<Registration> getRegistrationList() {
-        return registrationList;
-    }
-
-    public void setRegistrationList(List<Registration> registrationList) {
-        this.registrationList = registrationList;
-    }
-
-    public float getCollegeMedia() {
-        return collegeAverage;
-    }
-
-    public void setCollegeMedia(float collegeAverage) {
-        this.collegeAverage = collegeAverage;
     }
 }
