@@ -1,5 +1,6 @@
 package com.example.CollegeManager.models;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -9,7 +10,8 @@ public class Student extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idStudent;
-    @OneToMany
+    @OneToMany(mappedBy = "student")
+    @Nullable
     private List<Registration> registrationList;
     private float collegeAverage;
 
@@ -20,12 +22,17 @@ public class Student extends Person{
         this.collegeAverage = collegeAverage;
     }
 
-    public Student(Long idPerson, String firstName, String lastName, Long idStudent,
+    public Student(String firstName, String lastName, Long idStudent,
                    List<Registration> registrationList, float collegeAverage) {
-        super(idPerson, firstName, lastName);
+        super(firstName, lastName);
         this.idStudent = idStudent;
         this.registrationList = registrationList;
         this.collegeAverage = collegeAverage;
+    }
+
+    public Student(String firstName, String lastName, List<Registration> registrationList) {
+        super(firstName, lastName);
+        this.registrationList = registrationList;
     }
 
     public Long getIdStudent() {

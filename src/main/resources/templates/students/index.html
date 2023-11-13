@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <h1>Estudantes Matriculados</h1>
-        <a href=#>Matricular aluno</a>
+        <a href="students/new">Matricular aluno</a>
     </div>
     <div class="row">
         <div class="col-12">
@@ -31,7 +31,7 @@
                 <tbody>
                 <tr th:each="student : ${students}">
                     <td class="col-1" th:text="${student.getIdStudent()}"></td>
-                    <td class="col-1" th:text="${student.getName() + ' ' + student.getLastName()}"></td>
+                    <td class="col-1" th:text="${student.getFirstName() + ' ' + student.getLastName()}"></td>
                 </tr>
                 </tbody>
             </table>

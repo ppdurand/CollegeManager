@@ -13,7 +13,7 @@ public class Course {
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Professor professor;
-    @OneToMany
+    @OneToMany(mappedBy = "course")
     private List<Registration> registrationList;
 
     public Course() {}

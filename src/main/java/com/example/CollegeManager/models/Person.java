@@ -1,24 +1,23 @@
 package com.example.CollegeManager.models;
 
-public class Person {
-    private Long idPerson;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+@MappedSuperclass
+public abstract class Person {
+    @NotNull
+    @NotBlank
     private String firstName;
+    @NotNull
+    @NotBlank
     private String lastName;
 
     public Person() {}
 
-    public Person(Long idPerson, String firstName, String lastName) {
-        this.idPerson = idPerson;
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public Long getIdPerson() {
-        return idPerson;
-    }
-
-    public void setIdPerson(Long idPerson) {
-        this.idPerson = idPerson;
     }
 
     public String getFirstName() {

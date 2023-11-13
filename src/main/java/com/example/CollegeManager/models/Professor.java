@@ -9,7 +9,7 @@ public class Professor extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProfessor;
-    @OneToMany
+    @OneToMany(mappedBy = "professor")
     private List<Course> courseList;
 
     public Professor() {}
@@ -19,9 +19,9 @@ public class Professor extends Person{
         this.courseList = courseList;
     }
 
-    public Professor(Long idPerson, String firstName, String lastName, Long idProfessor,
+    public Professor(String firstName, String lastName, Long idProfessor,
                      List<Course> courseList) {
-        super(idPerson, firstName, lastName);
+        super(firstName, lastName);
         this.idProfessor = idProfessor;
         this.courseList = courseList;
     }
