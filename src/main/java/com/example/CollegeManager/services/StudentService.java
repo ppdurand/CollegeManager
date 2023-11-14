@@ -23,7 +23,8 @@ public class StudentService implements IService<CreateStudent> {
                 .addObject("students", studentRepository.findAll());
     }
 
-    public ModelAndView createStudent() {
+    @Override
+    public ModelAndView createPage() {
         return new ModelAndView("students/new")
                 .addObject("createStudent", new CreateStudent());
     }

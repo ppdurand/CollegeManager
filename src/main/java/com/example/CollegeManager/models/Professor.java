@@ -23,10 +23,8 @@ public class Professor extends Person{
         this.courseList = courseList;
     }
 
-    public Professor(String firstName, String lastName, Long idProfessor,
-                     List<Course> courseList) {
+    public Professor(String firstName, String lastName, List<Course> courseList) {
         super(firstName, lastName);
-        this.idProfessor = idProfessor;
         this.courseList = courseList;
     }
 }

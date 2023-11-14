@@ -23,7 +23,7 @@ public class StudentController {
 
     @GetMapping("/new")
     public ModelAndView create(){
-        return this.studentService.createStudent();
+        return this.studentService.createPage();
     }
 
     @PostMapping()
