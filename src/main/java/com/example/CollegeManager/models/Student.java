@@ -40,5 +40,7 @@ public class Student extends Person{
     }
 
     public Student(String firstName, String lastName, List<Course> courses) {
+        super(firstName, lastName);
+        this.courses = courses;
     }
 }
