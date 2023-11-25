@@ -6,6 +6,8 @@
     <title>Matricular Aluno</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
 </head>
 <body>
 <div class="container">
@@ -28,8 +30,19 @@
                     <div class="invalid-feedback" th:errors="*{lastName}"></div>
                 </div>
 
+                <h2>Selecione os Cursos:</h2>
+                <select th:field="*{courses}" multiple>
+                    <option th:each="course : ${courses}" th:value="${course.getIdCourse}" th:text="${course.name}">
+                    </option>
+                </select>
+
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
+            <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js">
+            </script>
+            <script>
+                new MultiSelectTag('courses')  // id
+            </script>
         </div>
         <a href="/students">Voltar</a>
     </div>

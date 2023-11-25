@@ -2,6 +2,7 @@ package com.example.CollegeManager.services;
 
 import com.example.CollegeManager.dto.CreateStudent;
 import com.example.CollegeManager.models.Student;
+import com.example.CollegeManager.repository.CourseRepository;
 import com.example.CollegeManager.repository.StudentRepository;
 import com.example.CollegeManager.services.Interfaces.IService;
 import jakarta.persistence.NoResultException;
@@ -16,6 +17,8 @@ public class StudentService implements IService<CreateStudent> {
 
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private CourseRepository courseRepository;
 
     @Override
     public ModelAndView getAll() {
@@ -26,13 +29,16 @@ public class StudentService implements IService<CreateStudent> {
     @Override
     public ModelAndView createPage() {
         return new ModelAndView("students/new")
-                .addObject("createStudent", new CreateStudent());
+                .addObject("createStudent", new CreateStudent())
+                .addObject("courses", courseRepository.findAll());
     }
 
     @Override
     public ModelAndView post(CreateStudent request, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("students/new");
+            return new ModelAndView("students/new")
+                    .addObject("createStudent", new CreateStudent())
+                    .addObject("courses", courseRepository.findAll());
         }
         this.studentRepository.save(request.toStudent());
         return new ModelAndView("redirect:/students");

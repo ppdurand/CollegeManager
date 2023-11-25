@@ -25,20 +25,18 @@ public class Course {
     @JoinColumn(name = "professor_id")
     private Professor professor;
     @Nullable
-    @OneToMany(mappedBy = "course")
-    private List<Registration> registrationList;
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students;
 
     public Course() {}
 
-    public Course(Long idCourse, String name, Professor professor, List<Registration> registrationList) {
+    public Course(Long idCourse, String name, Professor professor) {
         this.idCourse = idCourse;
         this.name = name;
         this.professor = professor;
-        this.registrationList = registrationList;
     }
 
-    public Course(String name, List<Registration> registrationList) {
+    public Course(String name) {
         this.name = name;
-        this.registrationList = registrationList;
     }
 }
