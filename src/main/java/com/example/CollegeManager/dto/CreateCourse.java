@@ -18,8 +18,8 @@ public class CreateCourse {
     private String name;
     private Professor professor;
 
-    public Course toCourse(){
-        Course course = new Course(this.getName());
+    public Course toCourse(Professor professor){
+        Course course = new Course(this.getName(), professor);
         return course;
     }
 }

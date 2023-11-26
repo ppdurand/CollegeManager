@@ -13,7 +13,7 @@ public class Professor extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProfessor;
-    @OneToMany(mappedBy = "professor")
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
     private List<Course> courseList;
 
     public Professor() {}

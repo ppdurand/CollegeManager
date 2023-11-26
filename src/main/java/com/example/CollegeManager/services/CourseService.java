@@ -45,7 +45,7 @@ public class CourseService implements IService<CreateCourse> {
                     .addObject("createCourse", new CreateCourse())
                     .addObject("professors", this.professorRepository.findAll());
         }
-        this.courseRepository.save(request.toCourse());
+        this.courseRepository.save(request.toCourse(request.getProfessor()));
         return new ModelAndView("redirect:/courses");
     }
 
