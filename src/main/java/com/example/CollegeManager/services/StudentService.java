@@ -27,6 +27,11 @@ public class StudentService implements IService<CreateStudent> {
     }
 
     @Override
+    public ModelAndView getById(Long id) {
+        return null;
+    }
+
+    @Override
     public ModelAndView createPage() {
         return new ModelAndView("students/new")
                 .addObject("createStudent", new CreateStudent())

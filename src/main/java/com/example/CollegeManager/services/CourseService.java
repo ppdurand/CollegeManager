@@ -27,6 +27,11 @@ public class CourseService implements IService<CreateCourse> {
     }
 
     @Override
+    public ModelAndView getById(Long id) {
+        return null;
+    }
+
+    @Override
     public ModelAndView createPage() {
         return new ModelAndView("courses/new")
                 .addObject("createCourse", new CreateCourse())

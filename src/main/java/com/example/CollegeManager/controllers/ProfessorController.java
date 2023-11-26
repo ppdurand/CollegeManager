@@ -24,6 +24,11 @@ public class ProfessorController {
         return this.professorService.getAll();
     }
 
+    @GetMapping("/show/{id}")
+    public ModelAndView getById(@PathVariable Long id){
+        return this.professorService.getById(id);
+    }
+
     @GetMapping("/new")
     public ModelAndView getAll(){
         return this.professorService.createPage();

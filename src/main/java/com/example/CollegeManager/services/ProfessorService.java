@@ -22,6 +22,15 @@ public class ProfessorService implements IService<CreateProfessor> {
     }
 
     @Override
+    public ModelAndView getById(Long id) {
+        return this.professorRepository.findById(id)
+                .map(professor -> new ModelAndView("professors/show")
+                        .addObject("professor", professor))
+                .orElseGet(() -> new ModelAndView("redirect:/professors/index")
+                        .addObject("professors", this.professorRepository.findAll()));
+    }
+
+    @Override
     public ModelAndView createPage() {
         return new ModelAndView("professors/new")
                 .addObject("createProfessor", new CreateProfessor());
