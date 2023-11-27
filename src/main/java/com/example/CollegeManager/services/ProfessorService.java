@@ -26,7 +26,7 @@ public class ProfessorService implements IService<CreateProfessor> {
         return this.professorRepository.findById(id)
                 .map(professor -> new ModelAndView("professors/show")
                         .addObject("professor", professor))
-                .orElseGet(() -> new ModelAndView("redirect:/professors/index")
+                .orElseGet(() -> new ModelAndView("redirect:/professors")
                         .addObject("professors", this.professorRepository.findAll()));
     }
 

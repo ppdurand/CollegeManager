@@ -21,6 +21,11 @@ public class StudentController {
         return studentService.getAll();
     }
 
+    @GetMapping("/show/{id}")
+    public ModelAndView getById(@PathVariable Long id){
+        return this.studentService.getById(id);
+    }
+
     @GetMapping("/new")
     public ModelAndView create(){
         return this.studentService.createPage();

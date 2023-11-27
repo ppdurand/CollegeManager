@@ -22,6 +22,11 @@ public class CourseController {
         return this.courseService.getAll();
     }
 
+    @GetMapping("show/{id}")
+    public ModelAndView getById(@PathVariable Long id){
+        return this.courseService.getById(id);
+    }
+
     @GetMapping("/new")
     public ModelAndView createPage(){
         return this.courseService.createPage();

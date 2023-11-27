@@ -9,6 +9,7 @@ import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,7 +29,11 @@ public class StudentService implements IService<CreateStudent> {
 
     @Override
     public ModelAndView getById(Long id) {
-        return null;
+        return this.studentRepository.findById(id)
+                .map(student -> new ModelAndView("students/show")
+                        .addObject("student", student))
+                .orElseGet(() -> new ModelAndView("redirect:/students")
+                        .addObject("students", this.studentRepository.findAll()));
     }
 
     @Override

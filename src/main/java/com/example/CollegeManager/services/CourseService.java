@@ -8,6 +8,7 @@ import com.example.CollegeManager.repository.ProfessorRepository;
 import com.example.CollegeManager.services.Interfaces.IService;
 import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,7 +29,11 @@ public class CourseService implements IService<CreateCourse> {
 
     @Override
     public ModelAndView getById(Long id) {
-        return null;
+        return this.courseRepository.findById(id)
+                .map(course -> new ModelAndView("courses/show")
+                        .addObject("course", course))
+                .orElseGet(() -> new ModelAndView("redirect:/courses")
+                        .addObject("courses", this.courseRepository.findAll()));
     }
 
     @Override
