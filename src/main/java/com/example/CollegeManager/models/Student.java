@@ -20,24 +20,8 @@ public class Student extends Person{
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     @Nullable
     private List<Course> courses;
-    @Nullable
-    private float collegeAverage;
 
     public Student() {}
-    public Student(Long idStudent, float collegeAverage) {
-        this.idStudent = idStudent;
-        this.collegeAverage = collegeAverage;
-    }
-
-    public Student(String firstName, String lastName, Long idStudent, float collegeAverage) {
-        super(firstName, lastName);
-        this.idStudent = idStudent;
-        this.collegeAverage = collegeAverage;
-    }
-
-    public Student(String firstName, String lastName) {
-        super(firstName, lastName);
-    }
 
     public Student(String firstName, String lastName, List<Course> courses) {
         super(firstName, lastName);

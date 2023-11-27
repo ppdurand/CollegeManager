@@ -1,11 +1,13 @@
 package com.example.CollegeManager.services;
 
 import com.example.CollegeManager.dto.CreateStudent;
+import com.example.CollegeManager.dto.EditStudent;
 import com.example.CollegeManager.models.Student;
 import com.example.CollegeManager.repository.CourseRepository;
 import com.example.CollegeManager.repository.StudentRepository;
 import com.example.CollegeManager.services.Interfaces.IService;
 import jakarta.persistence.NoResultException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service
-public class StudentService implements IService<CreateStudent> {
+public class StudentService implements IService<CreateStudent, EditStudent> {
 
     @Autowired
     private StudentRepository studentRepository;
@@ -52,6 +54,28 @@ public class StudentService implements IService<CreateStudent> {
         }
         this.studentRepository.save(request.toStudent());
         return new ModelAndView("redirect:/students");
+    }
+
+    @Override
+    public ModelAndView editPage(Long id, EditStudent entity) {
+        return studentRepository.findById(id)
+                .map(student -> {
+                    entity.fromStudent(student);
+                    return new ModelAndView("students/edit")
+                            .addObject("editStudent", entity)
+                            .addObject("courses", courseRepository.findAll());
+                })
+                .orElseGet(() -> new ModelAndView("redirect:/students"));
+    }
+    @Override
+    public ModelAndView update(Long id, @Valid EditStudent entity, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return getAll();
+        }
+        return this.studentRepository.findById(id).map(student ->{
+                this.studentRepository.save(entity.toStudent(student));
+                return new ModelAndView("redirect:/students");
+        }).orElseGet(() -> new ModelAndView("redirect:/students"));
     }
 
     @Override

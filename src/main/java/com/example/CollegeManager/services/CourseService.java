@@ -2,6 +2,7 @@ package com.example.CollegeManager.services;
 
 
 import com.example.CollegeManager.dto.CreateCourse;
+import com.example.CollegeManager.dto.EditStudent;
 import com.example.CollegeManager.models.Course;
 import com.example.CollegeManager.repository.CourseRepository;
 import com.example.CollegeManager.repository.ProfessorRepository;
@@ -14,7 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service
-public class CourseService implements IService<CreateCourse> {
+public class CourseService implements IService<CreateCourse, EditStudent> {
 
     @Autowired
     private CourseRepository courseRepository;
@@ -52,6 +53,16 @@ public class CourseService implements IService<CreateCourse> {
         }
         this.courseRepository.save(request.toCourse(request.getProfessor()));
         return new ModelAndView("redirect:/courses");
+    }
+
+    @Override
+    public ModelAndView editPage(Long id, EditStudent entity) {
+        return null;
+    }
+
+    @Override
+    public ModelAndView update(Long id, EditStudent entity, BindingResult bindingResult) {
+        return null;
     }
 
     @Override

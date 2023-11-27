@@ -1,6 +1,7 @@
 package com.example.CollegeManager.services;
 
 import com.example.CollegeManager.dto.CreateProfessor;
+import com.example.CollegeManager.dto.EditStudent;
 import com.example.CollegeManager.models.Professor;
 import com.example.CollegeManager.repository.ProfessorRepository;
 import com.example.CollegeManager.services.Interfaces.IService;
@@ -11,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service
-public class ProfessorService implements IService<CreateProfessor> {
+public class ProfessorService implements IService<CreateProfessor, EditStudent> {
 
     @Autowired
     private ProfessorRepository professorRepository;
@@ -44,6 +45,16 @@ public class ProfessorService implements IService<CreateProfessor> {
         }
         this.professorRepository.save(request.toProfessor());
         return new ModelAndView("redirect:/professors");
+    }
+
+    @Override
+    public ModelAndView editPage(Long id, EditStudent entity) {
+        return null;
+    }
+
+    @Override
+    public ModelAndView update(Long id, EditStudent entity, BindingResult bindingResult) {
+        return null;
     }
 
     @Override

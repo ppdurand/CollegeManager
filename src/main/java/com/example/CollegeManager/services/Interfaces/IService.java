@@ -3,7 +3,7 @@ package com.example.CollegeManager.services.Interfaces;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
-public interface IService<T> {
+public interface IService<T, E> {
     ModelAndView getAll();
 
     ModelAndView getById(Long id);
@@ -11,6 +11,10 @@ public interface IService<T> {
     ModelAndView createPage();
 
     ModelAndView post(T entity, BindingResult bindingResult);
+
+    ModelAndView editPage(Long id, E entity);
+
+    ModelAndView update(Long id, E entity, BindingResult bindingResult);
 
     ModelAndView deleteById(Long Id);
 }

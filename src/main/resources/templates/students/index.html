@@ -33,6 +33,7 @@
                     <td class="col-1" th:text="${student.getIdStudent()}"></td>
                     <td class="col-1" th:text="${student.getFirstName() + ' ' + student.getLastName()}"></td>
                     <td class="col-1"><a th:href="@{'/students/' + 'show/' + ${student.getIdStudent}}">Detalhes</a></td>
+                    <td class="col-1"><a th:href="@{'/students/' + 'edit/' + ${student.getIdStudent}}">Editar</a></td>
                     <td class="col-1"><a th:href="@{'/students/' + 'delete/' + ${student.getIdStudent}}">Deletar</a></td>
 
                 </tr>
